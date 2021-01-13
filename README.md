@@ -12,3 +12,5 @@ Parch and Posey, a hypothetical paper company's sales data of different types of
 
 ### SQL Aggregations
 SUM, AVG, COUNT, HAVING, [CASE and DATE functions](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Aggregations.md)
+
+### SQL Subqueries & Temporary Tables
