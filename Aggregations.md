@@ -1,12 +1,12 @@
-### Questions: DATEs
+### DATEs
 
 - Find the sales in terms of **total dollars for all orders** in **each year**, ordered from greatest to least.
 
 ```javascript
 SELECT DATE_PART('year', occurred_at) ord_year,  SUM(total_amt_usd) total_spent
- FROM orders
- GROUP BY 1
- ORDER BY 2 DESC;
+FROM orders
+GROUP BY 1
+ORDER BY 2 DESC;
 ```
 > When we look at the yearly totals, 2013 and 2017 have much smaller totals than all other years. If we look further at the monthly data, we see that for 2013 and 2017 there is only one month of sales for each of these years (12 for 2013 and 1 for 2017). Therefore, neither of these are evenly represented. Sales have been increasing year over year, with 2016 being the largest sales to date. At this rate, we might expect 2017 to have the largest sales.
 
@@ -56,7 +56,7 @@ LIMIT 1;
 ```
 > May 2016 was when Walmart spent the most on gloss paper.
 
-### Questions: CASE
+### CASE
 
 - Write a query to display the **number of orders in each of three categories**, based on the **total number of items in each order**. The three categories are: 'At Least 2000', 'Between 1000 and 2000' and 'Less than 1000'.
 
