@@ -1,4 +1,4 @@
-### DATEs
+## DATEs
 
 - Find the sales in terms of **total dollars for all orders** in **each year**, ordered from greatest to least.
 
