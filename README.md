@@ -14,4 +14,11 @@ Parch and Posey, a hypothetical paper company's sales data of different types of
 SUM, AVG, COUNT, HAVING, [CASE and DATE functions](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Aggregations.md)
 
 ### SQL Subqueries & Temporary Tables
-Find the average number of events for each day for each channel
+1. Find the average number of events for each day for each channel
+2. What was the month/year combo for the first order placed? Find only the orders that took place in the same month/year as the first order, then pull the average for each type of paper qty in this month, and the total amount spent on all orders (in terms of usd).
+3. Provide the name of the sales_rep in each region with the largest amount of total_amt_usd sales.
+4. For the region with the largest (sum) of sales total_amt_usd, how many total (count) orders were placed?
+5. How many accounts had more total purchases than the account name which has bought the most standard_qty paper throughout their lifetime as a customer?
+6. For the customer that spent the most (in total over their lifetime as a customer) total_amt_usd, how many web_events did they have for each channel?
+7. What is the lifetime average amount spent in terms of total_amt_usd for the top 10 total spending accounts?
+8. What is the lifetime average amount spent in terms of total_amt_usd, including only the companies that spent more per order, on average, than the average of all orders.
