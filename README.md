@@ -8,7 +8,7 @@ Parch and Posey, a hypothetical paper company's sales data of different types of
 >SQL databases: [Postgres](https://www.postgresql.org/) ([detailed guidance](https://medium.com/@gauravinthevalley/run-the-parch-posey-db-locally-in-postgres-8a0c2fde0c2e))
 
 ### Entity Relationship Diagrams(ERD)
-![](https://classroom.udacity.com/courses/ud198/lessons/b50a9cfd-566a-4b42-bf4f-70081b557c0b/concepts/a4ea6477-dbb6-4890-ac82-ad19f60cc3c5)
+![](https://video.udacity-data.com/topher/2017/November/5a0e2796_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png)
 
 ### SQL Aggregations
 SUM, AVG, COUNT, HAVING, [CASE and DATE functions](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Aggregations.md)
