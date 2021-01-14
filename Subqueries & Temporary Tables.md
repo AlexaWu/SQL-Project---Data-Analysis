@@ -1,8 +1,8 @@
 ### Subquery
 
-- Find the average number of events for each day for each channel. The first table provide the number of events for each day and channel, and then average these values together using a second query
+- Find the **average number of events** for **each day** for **each channel**. The first table provide the number of events for each day and channel, and then average these values together using a second query
 
-Step 1, group by the day and channel. Then ordering by the number of events (the third column).
+Step 1, group by the day and channel, then ordering by the number of events (the third column).
 
 ```javascript
 SELECT DATE_TRUNC('day',occurred_at) AS day,
