@@ -161,13 +161,135 @@ HAVING SUM(o.total_amt_usd) = (
 
 ---
 
-- How many accounts had more total purchases than the account name which has bought the most standard_qty paper throughout their lifetime as a customer?
+- **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer?
+
+First, we want to find the account that had the most **standard_qty** paper. The query here pulls that account, as well as the total amount:
+```javascript
+SELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total
+FROM accounts a
+JOIN orders o
+ON o.account_id = a.id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
+```
+Now, I want to use this to pull all the accounts with more total sales:
+```javascript
+SELECT a.name
+FROM orders o
+JOIN accounts a
+ON a.id = o.account_id
+GROUP BY 1
+HAVING SUM(o.total) > (SELECT total 
+                   FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total
+                         FROM accounts a
+                         JOIN orders o
+                         ON o.account_id = a.id
+                         GROUP BY 1
+                         ORDER BY 2 DESC
+                         LIMIT 1) sub);
+```
+This is now a list of all the accounts with more total orders. We can get the count with just another simple subquery.
+```javascript
+SELECT COUNT(*)
+FROM (SELECT a.name
+       FROM orders o
+       JOIN accounts a
+       ON a.id = o.account_id
+       GROUP BY 1
+       HAVING SUM(o.total) > (SELECT total 
+                   FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total
+                         FROM accounts a
+                         JOIN orders o
+                         ON o.account_id = a.id
+                         GROUP BY 1
+                         ORDER BY 2 DESC
+                         LIMIT 1) inner_tab)
+             ) counter_tab;
+```
+---
+	     
+- For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?
+
+Here, we first want to pull the customer with the most spent in lifetime value.
+```javascript
+SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
+FROM orders o
+JOIN accounts a
+ON a.id = o.account_id
+GROUP BY a.id, a.name
+ORDER BY 3 DESC
+LIMIT 1;
+```
+Now, we want to look at the number of events on each channel this company had, which we can match with just the **id**.
+```javascript
+SELECT a.name, w.channel, COUNT(*)
+FROM accounts a
+JOIN web_events w
+ON a.id = w.account_id AND a.id =  (SELECT id
+                     FROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
+                           FROM orders o
+                           JOIN accounts a
+                           ON a.id = o.account_id
+                           GROUP BY a.id, a.name
+                           ORDER BY 3 DESC
+                           LIMIT 1) inner_table)
+GROUP BY 1, 2
+ORDER BY 3 DESC;
+```
+I added an **ORDER BY** for no real reason, and the account name to assure I was only pulling from one account.
+
+---
+	
+- What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?
+
+First, we just want to find the top 10 accounts in terms of highest **total_amt_usd**.
+```javascript
+SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
+FROM orders o
+JOIN accounts a
+ON a.id = o.account_id
+GROUP BY a.id, a.name
+ORDER BY 3 DESC
+LIMIT 10;
+```
+Now, we just want the average of these 10 amounts.
+```javascript
+SELECT AVG(tot_spent)
+FROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
+      FROM orders o
+      JOIN accounts a
+      ON a.id = o.account_id
+      GROUP BY a.id, a.name
+      ORDER BY 3 DESC
+       LIMIT 10) temp;
+```
+
+---
+
+- What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.
+
+First, we want to pull the average of all accounts in terms of **total_amt_usd**:
+```javascript
+SELECT AVG(o.total_amt_usd) avg_all
+FROM orders o
+```
+Then, we want to only pull the accounts with more than this average amount.
+```javascript
+SELECT o.account_id, AVG(o.total_amt_usd)
+FROM orders o
+GROUP BY 1
+HAVING AVG(o.total_amt_usd) > (SELECT AVG(o.total_amt_usd) avg_all
+                               FROM orders o);
+```
+Finally, we just want the average of these values.
+```javascript
+SELECT AVG(avg_amt)
+FROM (SELECT o.account_id, AVG(o.total_amt_usd) avg_amt
+    FROM orders o
+    GROUP BY 1
+    HAVING AVG(o.total_amt_usd) > (SELECT AVG(o.total_amt_usd) avg_all
+                                   FROM orders o)) temp_table;
+```
 
 
-For the customer that spent the most (in total over their lifetime as a customer) total_amt_usd, how many web_events did they have for each channel?
-
-
-What is the lifetime average amount spent in terms of total_amt_usd for the top 10 total spending accounts?
-
-
-What is the lifetime average amount spent in terms of total_amt_usd, including only the companies that spent more per order, on average, than the average of all orders.
