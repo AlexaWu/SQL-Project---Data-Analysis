@@ -13,7 +13,7 @@ Parch and Posey, a hypothetical paper company's sales data of different types of
 ### SQL Aggregations
 SUM, AVG, COUNT, HAVING, [CASE and DATE functions](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Aggregations.md)
 
-### SQL Subqueries & Temporary Tables
+### [SQL Subqueries & Temporary Tables](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Subqueries%20%26%20Temporary%20Tables.md)
 1. Find the average number of events for each day for each channel
 2. What was the month/year combo for the first order placed? Find only the orders that took place in the same month/year as the first order, then pull the average for each type of paper qty in this month, and the total amount spent on all orders (in terms of usd).
 3. Provide the name of the sales_rep in each region with the largest amount of total_amt_usd sales.
