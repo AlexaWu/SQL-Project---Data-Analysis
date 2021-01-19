@@ -46,8 +46,8 @@ FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U')
 ---
 # POSITION, STRPOS, & SUBSTR
 
-POSITION(',' IN city_state)        \
-STRPOS(city_state, ',')
+**POSITION(',' IN city_state)** takes a character and a column, and provides the index where that character is for each row       \
+**STRPOS(city_state, ',')** provides the same result as POSITION
 
 > The index of the first position is 1 in SQL
 - Use the `accounts` table to create **first** and **last** name columns that hold the first and last names for the **primary_poc**.
@@ -110,7 +110,7 @@ FROM t1;
 ---
 # TO_DATE, CAST, Casting with ::
 
-**DATE_PART('month', TO_DATE(month, 'month'))** here changed a month name into the number associated with that particular month.
+**DATE_PART('month', TO_DATE(month, 'month'))** change a month name into the number associated with that particular month.
 
 **CAST(date_column AS DATE)** change a string to a date. CAST could change lots of column types, [other examples](https://www.postgresqltutorial.com/postgresql-cast/).
 
