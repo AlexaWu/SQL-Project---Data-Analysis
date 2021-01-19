@@ -118,3 +118,25 @@ FROM t1;
 
 > LEFT, RIGHT, and TRIM(remove characters from the beginning and end of a string) are used to select only certain elements of strings, but using them to select a number or date will treat them as strings for the purpose of the function.
 Other string functions covered in [Postgres literature](https://www.postgresql.org/docs/9.1/functions-string.html)
+
+- Write a query to look at the top 10 rows to understand the columns and the raw data in the dataset called `sf_crime_data`.
+```javascript
+SELECT *
+FROM sf_crime_data
+LIMIT 10;
+```
+- Write a query to change the date into the correct SQL date format. Using **SUBSTR** and **CONCAT** to perform this operation.
+```javascript
+SELECT date orig_date, 
+       (SUBSTR(date, 7, 4) || '-' || LEFT(date, 2) || '-' || SUBSTR(date, 4, 2)) new_date
+FROM sf_crime_data;
+```
+
+- Once you have created a column in the correct format, use either **CAST** or **::** to convert this to a date.
+```javascript
+SELECT date orig_date, 
+       (SUBSTR(date, 7, 4) || '-' || LEFT(date, 2) || '-' || SUBSTR(date, 4, 2))::DATE new_date
+FROM sf_crime_data;
+```
+> this new date can be operated on using DATE_TRUNC and DATE_PART in the same way 
+---
