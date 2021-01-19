@@ -38,4 +38,5 @@ SUM, AVG, COUNT, HAVING
 7. What is the lifetime average amount spent in terms of total_amt_usd for the top 10 total spending accounts?
 8. What is the lifetime average amount spent in terms of total_amt_usd, including only the companies that spent more per order, on average, than the average of all orders.
 
-[Temporary Tables](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Temporary%20Tables.md)
+[CTE / WITH](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Temporary%20Tables.md)
+Same as Subqueries 3-6, solve in CTE
