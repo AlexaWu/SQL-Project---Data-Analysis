@@ -110,3 +110,11 @@ FROM t1;
 ---
 # TO_DATE, CAST, Casting with ::
 
+**DATE_PART('month', TO_DATE(month, 'month'))** here changed a month name into the number associated with that particular month.
+
+**CAST(date_column AS DATE)** change a string to a date. CAST could change lots of column types, [other examples](https://www.postgresqltutorial.com/postgresql-cast/).
+
+**date_column::DATE**
+
+> LEFT, RIGHT, and TRIM(remove characters from the beginning and end of a string) are used to select only certain elements of strings, but using them to select a number or date will treat them as strings for the purpose of the function.
+Other string functions covered in [Postgres literature](https://www.postgresql.org/docs/9.1/functions-string.html)
