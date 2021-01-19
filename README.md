@@ -43,7 +43,7 @@ SUM, AVG, COUNT, HAVING
 Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 
 ### SQL Data Cleaning
-[LEFT, RIGHT, LENGTH]()
+[LEFT, RIGHT, LENGTH](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/LEFT%2C%20RIGHT%2C%20LENGTH)
 1. In the accounts table, there is a column holding the website for each company. The last three digits specify what type of web address they are using. A list of extensions (and pricing) is provided. Pull these extensions and provide how many of each website type exist in the accounts table.
 2. There is much debate about how much the name (or even the first letter of a company name) matters. Use the accounts table to pull the first letter of each company name to see the distribution of company names that begin with each letter (or number).
 3. Use the accounts table and a CASE statement to create two groups: one group of company names that start with a number and a second group of those company names that start with a letter. What proportion of company names start with a letter?
