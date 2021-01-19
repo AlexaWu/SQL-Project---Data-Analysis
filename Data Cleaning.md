@@ -46,9 +46,10 @@ FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U')
 ---
 # POSITION, STRPOS, & SUBSTR
 
-POSITION(',' IN city_state)        The index of the first position is 1 in SQL\
+POSITION(',' IN city_state)        \
 STRPOS(city_state, ',')
 
+> The index of the first position is 1 in SQL
 - Use the `accounts` table to create **first** and **last** name columns that hold the first and last names for the **primary_poc**.
 ```javascript
 SELECT LEFT(primary_poc, STRPOS(primary_poc, ' ') -1 ) first_name, 
