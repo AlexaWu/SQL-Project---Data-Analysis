@@ -58,3 +58,4 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 2. Create an email address that will work by removing all of the spaces in the account name.
 3. We would also like to create an initial password, which they will change after their first log in. The first password will be the first letter of the primary_poc's first name (lowercase), then the last letter of their first name (lowercase), the first letter of their last name (lowercase), the last letter of their last name (lowercase), the number of letters in their first name, the number of letters in their last name, and then the name of the company they are working with, all capitalized with no spaces.
 
+[TO_DATE, CAST, Casting with ::](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#to_date-cast-casting-with-)
