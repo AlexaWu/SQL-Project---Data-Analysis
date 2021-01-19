@@ -59,3 +59,4 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 3. We would also like to create an initial password, which they will change after their first log in. The first password will be the first letter of the primary_poc's first name (lowercase), then the last letter of their first name (lowercase), the first letter of their last name (lowercase), the last letter of their last name (lowercase), the number of letters in their first name, the number of letters in their last name, and then the name of the company they are working with, all capitalized with no spaces.
 
 [TO_DATE, CAST, Casting with ::](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#to_date-cast-casting-with-)
+> work with SF Crime Data database ([online workspace](https://classroom.udacity.com/courses/ud198/lessons/03f64082-fa4d-4aff-80be-d48597867e07/concepts/a9de2023-ae43-4781-a5c5-050bf5c33dd9))
