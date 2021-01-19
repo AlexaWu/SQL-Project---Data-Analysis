@@ -48,3 +48,7 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 2. There is much debate about how much the name (or even the first letter of a company name) matters. Use the accounts table to pull the first letter of each company name to see the distribution of company names that begin with each letter (or number).
 3. Use the accounts table and a CASE statement to create two groups: one group of company names that start with a number and a second group of those company names that start with a letter. What proportion of company names start with a letter?
 4. Consider vowels as a, e, i, o, and u. What proportion of company names start with a vowel, and what percent start with anything else?
+
+[POSITION, STRPOS, & SUBSTR](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/LEFT,%20RIGHT,%20LENGTH.md#position-strpos--substr)
+1. Use the accounts table to create first and last name columns that hold the first and last names for the primary_poc.
+2. Now see if you can do the same thing for every rep name in the sales_reps table. Again provide first and last name columns.
