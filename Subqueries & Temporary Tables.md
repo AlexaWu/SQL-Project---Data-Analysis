@@ -44,7 +44,8 @@ Step 2, get a table that shows the **average** number of events a day for each c
 SELECT AVG(standard_qty) avg_std, AVG(gloss_qty) avg_gls, AVG(poster_qty) avg_pst, SUM(total_amt_usd)
 FROM orders
 WHERE DATE_TRUNC('month', occurred_at) = 
-     (SELECT DATE_TRUNC('month', MIN(occurred_at)) FROM orders);
+     (SELECT DATE_TRUNC('month', MIN(occurred_at)) 
+     FROM orders);
 ```
 
 ---
@@ -55,12 +56,9 @@ First, I wanted to find the **total_amt_usd** totals associated with each **sale
 ```javascript
 SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
 FROM sales_reps s
-JOIN accounts a
-ON a.sales_rep_id = s.id
-JOIN orders o
-ON o.account_id = a.id
-JOIN region r
-ON r.id = s.region_id
+JOIN accounts a ON a.sales_rep_id = s.id
+JOIN orders o ON o.account_id = a.id
+JOIN region r ON r.id = s.region_id
 GROUP BY 1,2
 ORDER BY 3 DESC;
 ```
@@ -69,12 +67,9 @@ Next, I pulled the max for each region, and then we can use this to pull those r
 SELECT region_name, MAX(total_amt) total_amt
      FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
              FROM sales_reps s
-             JOIN accounts a
-             ON a.sales_rep_id = s.id
-             JOIN orders o
-             ON o.account_id = a.id
-             JOIN region r
-             ON r.id = s.region_id
+             JOIN accounts a ON a.sales_rep_id = s.id
+             JOIN orders o ON o.account_id = a.id
+             JOIN region r ON r.id = s.region_id
              GROUP BY 1, 2) t1
      GROUP BY 1;
 ```
@@ -84,25 +79,20 @@ SELECT t3.rep_name, t3.region_name, t3.total_amt
 FROM(SELECT region_name, MAX(total_amt) total_amt
      FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
              FROM sales_reps s
-             JOIN accounts a
-             ON a.sales_rep_id = s.id
-             JOIN orders o
-             ON o.account_id = a.id
-             JOIN region r
-             ON r.id = s.region_id
+             JOIN accounts a ON a.sales_rep_id = s.id
+             JOIN orders o ON o.account_id = a.id
+             JOIN region r ON r.id = s.region_id
              GROUP BY 1, 2) t1
      GROUP BY 1) t2
 JOIN (SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
      FROM sales_reps s
-     JOIN accounts a
-     ON a.sales_rep_id = s.id
-     JOIN orders o
-     ON o.account_id = a.id
-     JOIN region r
-     ON r.id = s.region_id
+     JOIN accounts a ON a.sales_rep_id = s.id
+     JOIN orders o ON o.account_id = a.id
+     JOIN region r ON r.id = s.region_id
      GROUP BY 1,2
      ORDER BY 3 DESC) t3
-ON t3.region_name = t2.region_name AND t3.total_amt = t2.total_amt;
+ON t3.region_name = t2.region_name 
+AND t3.total_amt = t2.total_amt;
 ```
 
 ---
@@ -112,13 +102,10 @@ ON t3.region_name = t2.region_name AND t3.total_amt = t2.total_amt;
 The first query I wrote was to pull the **total_amt_usd** for each **region**.
 ```javascript
 SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
-FROM sales_reps s
-JOIN accounts a
-ON a.sales_rep_id = s.id
-JOIN orders o
-ON o.account_id = a.id
-JOIN region r
-ON r.id = s.region_id
+FROM sales_reps s 
+JOIN accounts a ON a.sales_rep_id = s.id
+JOIN orders o ON o.account_id = a.id
+JOIN region r ON r.id = s.region_id
 GROUP BY r.name;
 ```
 Then we just want the region with the max amount from this table. There are two ways I considered getting this amount. One was to pull the max using a subquery. Another way is to order descending and just pull the top value.
@@ -126,35 +113,26 @@ Then we just want the region with the max amount from this table. There are two 
 SELECT MAX(total_amt)
 FROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
              FROM sales_reps s
-             JOIN accounts a
-             ON a.sales_rep_id = s.id
-             JOIN orders o
-             ON o.account_id = a.id
-             JOIN region r
-             ON r.id = s.region_id
+             JOIN accounts a ON a.sales_rep_id = s.id
+             JOIN orders o ON o.account_id = a.id
+             JOIN region r ON r.id = s.region_id
              GROUP BY r.name) sub;
 ```
 Finally, we want to pull the total orders for the region with this amount:
 ```javascript
 SELECT r.name, COUNT(o.total) total_orders
 FROM sales_reps s
-JOIN accounts a
-ON a.sales_rep_id = s.id
-JOIN orders o
-ON o.account_id = a.id
-JOIN region r
-ON r.id = s.region_id
+JOIN accounts a ON a.sales_rep_id = s.id
+JOIN orders o ON o.account_id = a.id
+JOIN region r ON r.id = s.region_id
 GROUP BY r.name
 HAVING SUM(o.total_amt_usd) = (
       SELECT MAX(total_amt)
       FROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
               FROM sales_reps s
-              JOIN accounts a
-              ON a.sales_rep_id = s.id
-              JOIN orders o
-              ON o.account_id = a.id
-              JOIN region r
-              ON r.id = s.region_id
+              JOIN accounts a ON a.sales_rep_id = s.id
+              JOIN orders o ON o.account_id = a.id
+              JOIN region r ON r.id = s.region_id
               GROUP BY r.name) sub);
 ```
 >This provides the **Northeast** with **2357** orders.
@@ -167,8 +145,7 @@ First, we want to find the account that had the most **standard_qty** paper. The
 ```javascript
 SELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total
 FROM accounts a
-JOIN orders o
-ON o.account_id = a.id
+JOIN orders o ON o.account_id = a.id
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 1;
@@ -177,14 +154,12 @@ Now, I want to use this to pull all the accounts with more total sales:
 ```javascript
 SELECT a.name
 FROM orders o
-JOIN accounts a
-ON a.id = o.account_id
+JOIN accounts a ON a.id = o.account_id
 GROUP BY 1
 HAVING SUM(o.total) > (SELECT total 
                    FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total
                          FROM accounts a
-                         JOIN orders o
-                         ON o.account_id = a.id
+                         JOIN orders o ON o.account_id = a.id
                          GROUP BY 1
                          ORDER BY 2 DESC
                          LIMIT 1) sub);
@@ -194,14 +169,12 @@ This is now a list of all the accounts with more total orders. We can get the co
 SELECT COUNT(*)
 FROM (SELECT a.name
        FROM orders o
-       JOIN accounts a
-       ON a.id = o.account_id
+       JOIN accounts a ON a.id = o.account_id
        GROUP BY 1
        HAVING SUM(o.total) > (SELECT total 
                    FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total
                          FROM accounts a
-                         JOIN orders o
-                         ON o.account_id = a.id
+                         JOIN orders o ON o.account_id = a.id
                          GROUP BY 1
                          ORDER BY 2 DESC
                          LIMIT 1) inner_tab)
