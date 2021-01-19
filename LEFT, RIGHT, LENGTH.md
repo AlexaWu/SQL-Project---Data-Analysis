@@ -46,3 +46,5 @@ FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U')
                        THEN 0 ELSE 1 END AS other
          FROM accounts) t1;
 ```
+---
+# POSITION, STRPOS, & SUBSTR
