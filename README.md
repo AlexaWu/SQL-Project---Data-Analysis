@@ -61,5 +61,5 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 [TO_DATE, CAST, Casting with ::](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#to_date-cast-casting-with-)
 > work with SF Crime Data database ([online workspace](https://classroom.udacity.com/courses/ud198/lessons/03f64082-fa4d-4aff-80be-d48597867e07/concepts/a9de2023-ae43-4781-a5c5-050bf5c33dd9))
 1. Write a query to look at the top 10 rows to understand the columns and the raw data in the dataset called sf_crime_data.
-2. Write a query to change the date into the correct SQL date format. Using SUBSTR and CONCAT.
+2. Write a query to change the date into the correct SQL date format. Using SUBSTR and CONCAT to perform this operation.
 3. Once you have created a column in the correct format, use either CAST or :: to convert this to a date.
