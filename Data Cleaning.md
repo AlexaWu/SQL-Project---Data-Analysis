@@ -108,3 +108,5 @@ SELECT first_name, last_name,
 FROM t1;
 ```
 ---
+# TO_DATE, CAST, Casting with ::
+
