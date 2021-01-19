@@ -43,3 +43,4 @@ SUM, AVG, COUNT, HAVING
 Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 
 ### SQL Data Cleaning
+[LEFT, RIGHT, LENGTH]()
