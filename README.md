@@ -70,3 +70,5 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 3. Use COALESCE to fill in each of the qty and usd columns with 0
 
 ### [Advanced] SQL Window Functions
+
+[OVER, PARTITION BY, ORDER BY]()
