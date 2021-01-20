@@ -68,3 +68,5 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 1. Use COALESCE to fill in the accounts.id column with the account.id for the NULL value
 2. Use COALESCE to fill in the orders.account_id column with the account.id for the NULL value
 3. Use COALESCE to fill in each of the qty and usd columns with 0
+
+### [Advanced] SQL Window Functions
