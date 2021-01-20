@@ -71,4 +71,4 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 
 ### [Advanced] SQL Window Functions / T-SQL / Transact-SQL
 
-[OVER, PARTITION BY, ORDER BY]()
+[OVER, PARTITION BY, ORDER BY](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Window%20Functions.md#over-partition-by-order-by)
