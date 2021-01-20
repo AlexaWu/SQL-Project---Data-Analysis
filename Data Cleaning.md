@@ -192,3 +192,6 @@ LEFT JOIN orders o
 ON a.id = o.account_id
 WHERE o.total IS NULL;
 ```
+---
+#### [SQL NULL Functions](https://www.w3schools.com/sql/sql_isnull.asp)
+#### [Data Cleaning Recap](https://mode.com/sql-tutorial/sql-string-functions-for-cleaning/)
