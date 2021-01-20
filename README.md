@@ -63,3 +63,8 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 1. Write a query to look at the top 10 rows to understand the columns and the raw data in the dataset called sf_crime_data.
 2. Write a query to change the date into the correct SQL date format. Using SUBSTR and CONCAT to perform this operation.
 3. Once you have created a column in the correct format, use either CAST or :: to convert this to a date.
+
+[COALESCE](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#coalesce)
+1. Use COALESCE to fill in the accounts.id column with the account.id for the NULL value
+2. Use COALESCE to fill in the orders.account_id column with the account.id for the NULL value
+3. Use COALESCE to fill in each of the qty and usd columns with 0
