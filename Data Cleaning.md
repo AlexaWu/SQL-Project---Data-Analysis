@@ -143,7 +143,7 @@ FROM sf_crime_data;
 # COALESCE
 COALESCE returns the first non-NULL value passed for each row
 
-- Use COALESCE to fill in the accounts.id column with the account.id for the NULL value
+- Use **COALESCE** to fill in the `accounts.id` column with the `account.id` for the NULL value
 
 ```javascript
 SELECT COALESCE(a.id, a.id) filled_id, 
@@ -153,23 +153,32 @@ LEFT JOIN orders o
 ON a.id = o.account_id
 WHERE o.total IS NULL;
 ```
-- Use COALESCE to fill in the orders.account_id column with the account.id for the NULL value
+- Use **COALESCE** to fill in the `orders.account_id` column with the `account.id` for the NULL value
 ```javascript
 SELECT COALESCE(a.id, a.id) filled_id, 
        a.name, a.website, a.lat, a.long, a.primary_poc, a.sales_rep_id, 
        COALESCE(o.account_id, a.id) account_id, 
-       o.occurred_at, o.standard_qty, o.gloss_qty, o.poster_qty, o.total, o.standard_amt_usd, o.gloss_amt_usd, o.poster_amt_usd, o.total_amt_usd
+       o.occurred_at, 
+       o.standard_qty, 
+       o.gloss_qty, 
+       o.poster_qty, 
+       o.total, 
+       o.standard_amt_usd, 
+       o.gloss_amt_usd, 
+       o.poster_amt_usd, 
+       o.total_amt_usd
 FROM accounts a
 LEFT JOIN orders o
 ON a.id = o.account_id
 WHERE o.total IS NULL;
 ```
 
-- Use COALESCE to fill in each of the qty and usd columns with 0
+- Use **COALESCE** to fill in each of the **qty** and **usd** columns with 0
 ```javascript
 SELECT COALESCE(a.id, a.id) filled_id, 
        a.name, a.website, a.lat, a.long, a.primary_poc, a.sales_rep_id, 
-       COALESCE(o.account_id, a.id) account_id, o.occurred_at, 
+       COALESCE(o.account_id, a.id) account_id, 
+       o.occurred_at, 
        COALESCE(o.standard_qty, 0) standard_qty, 
        COALESCE(o.gloss_qty,0) gloss_qty, 
        COALESCE(o.poster_qty,0) poster_qty, 
