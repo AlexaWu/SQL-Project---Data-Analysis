@@ -140,3 +140,5 @@ FROM sf_crime_data;
 ```
 > this new date can be operated on using DATE_TRUNC and DATE_PART in the same way 
 ---
+# COALESCE
+COALESCE returns the first non-NULL value passed for each row
