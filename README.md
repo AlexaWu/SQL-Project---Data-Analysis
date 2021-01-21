@@ -69,7 +69,7 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 2. Use COALESCE to fill in the orders.account_id column with the account.id for the NULL value
 3. Use COALESCE to fill in each of the qty and usd columns with 0
 
-## [Advanced] SQL Window Functions / T-SQL / Transact-SQL
+## [Advanced] SQL Window Functions
 
 [OVER, PARTITION BY, ORDER BY](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Window%20Functions.md#over-partition-by-order-by)
 1. Create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Final table should have two columns: the amount being added for each new row, and the running total.
