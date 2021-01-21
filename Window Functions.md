@@ -92,3 +92,5 @@ SELECT occurred_at,
  GROUP BY 1
 ) sub
 ```
+
+# Percentiles
