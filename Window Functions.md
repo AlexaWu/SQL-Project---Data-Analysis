@@ -11,11 +11,6 @@ SELECT sum(salary) OVER w, avg(salary) OVER w
   FROM empsalary
   WINDOW w AS (PARTITION BY depname ORDER BY salary DESC);
 ```
-Reference:
-[Window Function Calls](https://www.postgresql.org/docs/9.1/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS),
-[General-Purpose Window Functions](https://www.postgresql.org/docs/9.1/functions-window.html#FUNCTIONS-WINDOW-TABLE),
-[Window Function Processing](https://www.postgresql.org/docs/9.1/queries-table-expressions.html#QUERIES-WINDOW),
-[SELECT](https://www.postgresql.org/docs/9.1/sql-select.html)
 
 - Create a running total of **standard_amt_usd** (in the `orders` table) over order time with no date truncation. Final table should have two columns: the `amount being added for each new row`, and the `running total`.
 ```javascript
@@ -32,14 +27,14 @@ SELECT standard_amt_usd,
 FROM orders
 ```
 
-- [Oracle “Partition By” example](https://stackoverflow.com/questions/561836/oracle-partition-by-keyword)
-```javascript
-SELECT empno, deptno, 
-       COUNT(*) OVER (PARTITION BY deptno) DEPT_COUNT
-FROM emp
-```
-The PARTITION BY clause sets the range of records that will be used for each "GROUP" within the OVER clause.
+Reference:
+[Window Function Calls](https://www.postgresql.org/docs/9.1/sql-expressions.html#SYNTAX-WINDOW-FUNCTIONS),
+[General-Purpose Window Functions](https://www.postgresql.org/docs/9.1/functions-window.html#FUNCTIONS-WINDOW-TABLE),
+[Window Function Processing](https://www.postgresql.org/docs/9.1/queries-table-expressions.html#QUERIES-WINDOW),
+[SELECT](https://www.postgresql.org/docs/9.1/sql-select.html)
 
 ---
 
 # ROW_NUMBER & RANK
+
+- Select the id, account_id, and total variable from the orders table, then create a column called total_rank that ranks this total amount of paper ordered (from highest to lowest) for each account using a partition. Your final table should have these four columns.
