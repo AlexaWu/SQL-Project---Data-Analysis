@@ -2,10 +2,10 @@
 
 > Note: \
 Window functions can’t be used with standard aggregations in the same query. (can’t include window functions in a GROUP BY clause.)\
-Window functions are permitted only in the SELECT list and the ORDER BY clause of the query.\ 
+Window functions are permitted only in the SELECT list and the ORDER BY clause of the query.\
 Window functions execute after regular aggregate functions
 
-each windowing behavior can be named in a WINDOW clause and then referenced in OVER. For example:
+Each windowing behavior can be named in a WINDOW clause and then referenced in OVER. For example:
 ```javascript
 SELECT sum(salary) OVER w, avg(salary) OVER w
   FROM empsalary
