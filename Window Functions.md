@@ -46,4 +46,11 @@ SELECT id,
 FROM orders
 ```
 
-# Aggregates in Window Functions
+#### Aggregates in Window Functions
+
+#### Aliases for Multiple Window Functions
+
+# Comparing a Row to Previous Row
+
+LAG function: Return the value from a previous row to the current row in the table.
+LEAD function: Return the value from the row following the current row in the table.
