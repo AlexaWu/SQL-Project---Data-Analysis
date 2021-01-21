@@ -34,8 +34,12 @@ FROM orders
 
 - [Oracle “Partition By” example](https://stackoverflow.com/questions/561836/oracle-partition-by-keyword)
 ```javascript
-SELECT empno, deptno, COUNT(*) 
-OVER (PARTITION BY deptno) DEPT_COUNT
+SELECT empno, deptno, 
+       COUNT(*) OVER (PARTITION BY deptno) DEPT_COUNT
 FROM emp
 ```
 The PARTITION BY clause sets the range of records that will be used for each "GROUP" within the OVER clause.
+
+---
+
+# ROW_NUMBER & RANK
