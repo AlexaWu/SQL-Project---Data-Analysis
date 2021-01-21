@@ -45,3 +45,5 @@ SELECT id,
        RANK() OVER (PARTITION BY account_id ORDER BY total DESC) AS total_rank
 FROM orders
 ```
+
+# Aggregates in Window Functions
