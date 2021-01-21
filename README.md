@@ -75,4 +75,4 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 1. Create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Final table should have two columns: the amount being added for each new row, and the running total.
 2. Create a running total of standard_amt_usd (in the orders table) over order time, but this time, date truncate occurred_at by year and partition by that same year-truncated occurred_at variable. Final table should have three columns: the amount being added for each row, the truncated date, and the running total within each year.
 
-[ROW_NUMBER & RANK]()
+[ROW_NUMBER & RANK](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Window%20Functions.md#row_number--rank)
