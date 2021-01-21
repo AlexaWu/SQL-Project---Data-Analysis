@@ -10,7 +10,7 @@ Parch and Posey, a hypothetical paper company's sales data of different types of
 ### Entity Relationship Diagrams(ERD)
 ![](https://video.udacity-data.com/topher/2017/November/5a0e2796_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png)
 
-### SQL Aggregations
+## SQL Aggregations
 SUM, AVG, COUNT, HAVING
 
 [DATE](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Aggregations.md#dates)
@@ -27,7 +27,7 @@ SUM, AVG, COUNT, HAVING
 5. We would like to identify top performing sales reps, which are sales reps associated with more than 200 orders. Create a table with the sales rep name, the total number of orders, and a column with top or not depending on if they have more than 200 orders. Place the top sales people first in your final table.
 6. We would like to identify top performing sales reps, which are sales reps associated with more than 200 orders or more than 750000 in total sales. The middle group has any rep with more than 150 orders or 500000 in sales. Create a table with the sales rep name, the total number of orders, total sales across all orders, and a column with top, middle, or low depending on this criteria. Place the top sales people based on dollar amount of sales first in your final table.
 
-### SQL Subqueries & Common Table Expression
+## SQL Subqueries & Common Table Expression
 [Subqueries](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Subqueries%20%26%20Temporary%20Tables.md)
 1. Find the average number of events for each day for each channel
 2. What was the month/year combo for the first order placed? Find only the orders that took place in the same month/year as the first order, then pull the average for each type of paper qty in this month, and the total amount spent on all orders (in terms of usd).
@@ -42,7 +42,7 @@ SUM, AVG, COUNT, HAVING
 
 Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 
-### SQL Data Cleaning
+## SQL Data Cleaning
 [LEFT, RIGHT, LENGTH](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#left-right-length)
 1. In the accounts table, there is a column holding the website for each company. The last three digits specify what type of web address they are using. A list of extensions (and pricing) is provided. Pull these extensions and provide how many of each website type exist in the accounts table.
 2. There is much debate about how much the name (or even the first letter of a company name) matters. Use the accounts table to pull the first letter of each company name to see the distribution of company names that begin with each letter (or number).
@@ -69,7 +69,7 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 2. Use COALESCE to fill in the orders.account_id column with the account.id for the NULL value
 3. Use COALESCE to fill in each of the qty and usd columns with 0
 
-### [Advanced] SQL Window Functions / T-SQL / Transact-SQL
+## [Advanced] SQL Window Functions / T-SQL / Transact-SQL
 
 [OVER, PARTITION BY, ORDER BY](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Window%20Functions.md#over-partition-by-order-by)
 1. Create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Final table should have two columns: the amount being added for each new row, and the running total.
@@ -88,3 +88,5 @@ Select the id, account_id, and total variable from the orders table, then create
 1. Use the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of standard_qty paper purchased, and one of four levels in a standard_quartile column.
 2. Use the NTILE functionality to divide the accounts into two levels in terms of the amount of gloss_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of gloss_qty paper purchased, and one of two levels in a gloss_half column.
 3. Use the NTILE functionality to divide the orders for each account into 100 levels in terms of the amount of total_amt_usd for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of total_amt_usd paper purchased, and one of 100 levels in a total_percentile column.
+
+## [Advanced] SQL Advanced JOINs & Performance Tuning
