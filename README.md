@@ -72,3 +72,5 @@ Same as Subqueries 3-8, solve in CTE (more readable and efficient)
 ### [Advanced] SQL Window Functions / T-SQL / Transact-SQL
 
 [OVER, PARTITION BY, ORDER BY](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Window%20Functions.md#over-partition-by-order-by)
+1. Create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Final table should have two columns: the amount being added for each new row, and the running total.
+2. Create a running total of standard_amt_usd (in the orders table) over order time, but this time, date truncate occurred_at by year and partition by that same year-truncated occurred_at variable. Final table should have three columns: the amount being added for each row, the truncated date, and the running total within each year.
