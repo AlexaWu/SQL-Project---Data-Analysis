@@ -1,8 +1,6 @@
 # OVER, PARTITION BY, ORDER BY
 
-Unlike regular aggregate functions, use of a window function does not cause rows to become grouped into a single output row — the rows retain their separate identities
-
-> Note: You can’t use window functions and standard aggregations in the same query. More specifically, you can’t include window functions in a GROUP BY clause.
+> Note: can’t use window functions and standard aggregations in the same query. More specifically, can’t include window functions in a GROUP BY clause.
 
 - Create a running total of **standard_amt_usd** (in the `orders` table) over order time with no date truncation. Final table should have two columns: the amount being added for each new row, and the running total.
 ```javascript
