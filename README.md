@@ -102,4 +102,4 @@ Write a query that left joins the accounts table and the sales_reps tables on ea
 [Self JOINs](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#self-joins)\
 Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
 
-[UNION]()
+[UNION](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20%26%20Performance%20Tuning.md#union)
