@@ -91,4 +91,4 @@ Select the id, account_id, and total variable from the orders table, then create
 
 ## [Advanced] SQL Advanced JOINs & Performance Tuning
 
-[FULL OUTER JOIN]()
+[FULL OUTER JOIN](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#full-outer-join)
