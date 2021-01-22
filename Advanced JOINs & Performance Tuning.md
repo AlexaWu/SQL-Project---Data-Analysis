@@ -112,7 +112,7 @@ SELECT name,
 GROUP BY 1
 ORDER BY 2 DESC
  ```
-# Performance Tuning Motivation
+# Performance Tuning
 
 
 
