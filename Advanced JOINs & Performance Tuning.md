@@ -60,3 +60,6 @@ ORDER BY we1.account_id, we2.occurred_at
 ```
 
 # UNION
+
+> UNION removes duplicate rows.
+UNION ALL does not remove duplicate rows.
