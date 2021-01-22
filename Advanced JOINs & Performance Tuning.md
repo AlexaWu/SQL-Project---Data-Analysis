@@ -124,3 +124,11 @@ Query runtime is also dependent on some things that you can’t really control r
 
 >Other users running queries concurrently on the database\
 Database software and optimization (e.g., Postgres is optimized differently than Redshift)
+
+Tuning performance with LIMIT:
+
+>If you have time series data, limiting to a small time window can make your queries run more quickly.\
+Testing your queries on a subset of data, finalizing your query, then removing the subset limitation is a sound strategy.\
+When working with subqueries, limiting the amount of data you’re working with in the place where it will be executed first will have the maximum impact on query run time. 
+
+**EXPLAIN** → put in beginning of working query to see how long it will take
