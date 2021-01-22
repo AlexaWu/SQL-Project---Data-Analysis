@@ -103,3 +103,6 @@ Write a query that left joins the accounts table and the sales_reps tables on ea
 Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
 
 [UNION](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20%26%20Performance%20Tuning.md#union)
+1. Write a query that uses UNION ALL on two instances (and selecting all columns) of the accounts table.
+2. Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where name equals Walmart and filtering the second table where name equals Disney
+3. Perform the union in your first query (under the Appending Data via UNION header) in a common table expression and name it double_accounts. Then do a COUNT the number of times a name appears in the double_accounts table
