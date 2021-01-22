@@ -94,7 +94,7 @@ SELECT *
   WHERE name = 'Disney'
  ```
 
-- Perform the union in your first query (under the Appending Data via UNION header) in a common table expression and name it double_accounts. Then do a COUNT the number of times a name appears in the double_accounts table
+- Perform the union in first query in a common table expression and name it `double_accounts`. Then do a COUNT the number of times a name appears in the `double_accounts` table
 ```javascript
 WITH double_accounts AS (
     SELECT *
@@ -114,5 +114,13 @@ ORDER BY 2 DESC
  ```
 # Performance Tuning
 
+To make a query run faster is to reduce the number of calculations that need to be performed: 
 
+>Table size\
+Joins\
+Aggregations
 
+Query runtime is also dependent on some things that you can’t really control related to the database itself:
+
+>Other users running queries concurrently on the database\
+Database software and optimization (e.g., Postgres is optimized differently than Redshift)
