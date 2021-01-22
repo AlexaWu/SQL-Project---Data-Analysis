@@ -62,4 +62,56 @@ ORDER BY we1.account_id, we2.occurred_at
 # UNION
 
 > UNION removes duplicate rows.
-UNION ALL does not remove duplicate rows.
+UNION ALL does not remove duplicate rows.(more often)\
+Both tables must have the same number of columns.\
+Those columns must have the same data types in the same order as the first table.\
+Column names don't need to be the same to append two tables
+
+For example: When you want to determine all reasons students are late. Currently, each late reason is maintained within tables corresponding to the grade the student is in.
+
+The table with the students' information needs to be appended with the late reasons. It requires no aggregation or filter, but all duplicates need to be removed. So the final use case is the one where the UNION operator makes the most sense.
+
+- Write a query that uses UNION ALL on two instances (and selecting all columns) of the `accounts` table.
+```javascript
+SELECT *
+    FROM accounts
+
+UNION ALL
+
+SELECT *
+  FROM accounts
+ ```
+- Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where `name equals Walmart` and filtering the second table where `name equals Disney`
+```javascript
+SELECT *
+    FROM accounts
+    WHERE name = 'Walmart'
+
+UNION ALL
+
+SELECT *
+  FROM accounts
+  WHERE name = 'Disney'
+ ```
+
+- Perform the union in your first query (under the Appending Data via UNION header) in a common table expression and name it double_accounts. Then do a COUNT the number of times a name appears in the double_accounts table
+```javascript
+WITH double_accounts AS (
+    SELECT *
+      FROM accounts
+
+    UNION ALL
+
+    SELECT *
+      FROM accounts
+)
+
+SELECT name,
+       COUNT(*) AS name_count
+ FROM double_accounts 
+GROUP BY 1
+ORDER BY 2 DESC
+ ```
+
+
+
