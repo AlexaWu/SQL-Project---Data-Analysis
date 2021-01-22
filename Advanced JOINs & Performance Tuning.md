@@ -33,3 +33,5 @@ AND accounts.primary_poc < sales_reps.name
  
  >What is the relationship between accounts.primary_poc and sales_reps.name?\
  The primary point of contact's full name comes before the sales representative's name alphabetically
+ 
+ # Self JOINs
