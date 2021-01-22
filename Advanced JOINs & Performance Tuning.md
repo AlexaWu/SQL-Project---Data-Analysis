@@ -2,7 +2,7 @@
 
 > FULL JOIN is commonly used in conjunction with aggregations to understand the amount of overlap between two tables. A common application of this is when joining two tables on a timestamp. 
 
-you're an analyst at Parch & Posey and you want to see:
+As an analyst at Parch & Posey you want to see:
 
 - `each account who has a sales rep` and `each sales rep that has an account` (all of the columns in these returned rows will be full)
 - but also `each account that does not have a sales rep` and `each sales rep that does not have an account` (some of the columns in these returned rows will be empty)
@@ -19,7 +19,7 @@ FULL JOIN sales_reps ON accounts.sales_rep_id = sales_reps.id
 
 > Inequality operators (a.k.a. comparison operators) don't only need to be date times or numbers, they also work on strings
 
-- write a query that **left joins** the `accounts` table and the `sales_reps` tables on each **sale rep's ID number** and joins it using the **<** comparison operator on **accounts.primary_poc** and **sales_reps.name**. The query results should be a table with three columns: the `account name` (e.g. Johnson Controls), the `primary contact name` (e.g. Cammy Sosnowski), and the `sales representative's name` (e.g. Samuel Racine)
+- Write a query that **left joins** the `accounts` table and the `sales_reps` tables on each **sale rep's ID number** and joins it using the **<** comparison operator on **accounts.primary_poc** and **sales_reps.name**. The query results should be a table with three columns: the `account name` (e.g. Johnson Controls), the `primary contact name` (e.g. Cammy Sosnowski), and the `sales representative's name` (e.g. Samuel Racine)
 
 ```javascript
 SELECT accounts.name as account_name,
@@ -40,7 +40,7 @@ AND accounts.primary_poc < sales_reps.name
 
 [Date/Time Functions and Operators](https://www.postgresql.org/docs/8.2/functions-datetime.html)
 
-- find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
+- Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
 
 ```javascript
 SELECT we1.id AS we_id,
@@ -58,3 +58,5 @@ SELECT we1.id AS we_id,
   AND we1.occurred_at <= we2.occurred_at + INTERVAL '1 day'
 ORDER BY we1.account_id, we2.occurred_at
 ```
+
+# UNION
