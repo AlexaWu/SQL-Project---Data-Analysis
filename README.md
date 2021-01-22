@@ -92,11 +92,14 @@ Select the id, account_id, and total variable from the orders table, then create
 ## [Advanced] SQL Advanced JOINs & Performance Tuning
 
 [FULL OUTER JOIN](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#full-outer-join)\
-you're an analyst at Parch & Posey and you want to see:
+As an analyst at Parch & Posey you want to see:
 - each account who has a sales rep and each sales rep that has an account (all of the columns in these returned rows will be full)
 - but also each account that does not have a sales rep and each sales rep that does not have an account (some of the columns in these returned rows will be empty)
 
 [Inequality JOINs](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#inequality-joins)\
-write a query that left joins the accounts table and the sales_reps tables on each sale rep's ID number and joins it using the < comparison operator on accounts.primary_poc and sales_reps.name. The query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), and the sales representative's name (e.g. Samuel Racine)
+Write a query that left joins the accounts table and the sales_reps tables on each sale rep's ID number and joins it using the < comparison operator on accounts.primary_poc and sales_reps.name. The query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), and the sales representative's name (e.g. Samuel Racine)
 
-[Self JOINs](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#self-joins)
+[Self JOINs](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Advanced%20JOINs%20&%20Performance%20Tuning.md#self-joins)\
+Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
+
+[UNION]()
