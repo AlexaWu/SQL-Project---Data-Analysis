@@ -129,3 +129,5 @@ SELECT
   FROM orders 
  ORDER BY account_id DESC
 ```
+
+[T-SQL Window Functions](https://www.red-gate.com/simple-talk/sql/t-sql-programming/introduction-to-t-sql-window-functions/)
