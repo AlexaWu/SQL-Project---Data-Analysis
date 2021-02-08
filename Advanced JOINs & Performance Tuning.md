@@ -38,7 +38,7 @@ AND accounts.primary_poc < sales_reps.name
  
  >One of the most common use cases for self JOINs is in cases where two events occurred, one after another.
 
-[Date/Time Functions and Operators](https://www.postgresql.org/docs/8.2/functions-datetime.html)
+[Date/Time Functions and Operators](https://www.postgresql.org/docs/9.1/functions-datetime.html)
 
 - Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
 
