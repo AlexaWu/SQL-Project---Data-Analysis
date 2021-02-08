@@ -139,6 +139,10 @@ SELECT date orig_date,
 FROM sf_crime_data;
 ```
 > this new date can be operated on using DATE_TRUNC and DATE_PART in the same way 
+
+[DATE_TRUNC](https://mode.com/blog/date-trunc-sql-timestamp-function-count-on/): truncate date to a particular part of date-time column\
+DATE_PART: pulling a specific portion of a date
+
 ---
 # COALESCE
 COALESCE returns the first non-NULL value passed for each row
