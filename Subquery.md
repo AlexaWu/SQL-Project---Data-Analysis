@@ -142,7 +142,7 @@ HAVING SUM(o.total_amt_usd) = (
 - **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer?
 
 First, we want to find the account that had the most **standard_qty** paper. The query here pulls that account, as well as the total amount:
-```javascript
+```sql
 SELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total
 FROM accounts a
 JOIN orders o ON o.account_id = a.id
@@ -151,7 +151,7 @@ ORDER BY 2 DESC
 LIMIT 1;
 ```
 Now, I want to use this to pull all the accounts with more total sales:
-```javascript
+```sql
 SELECT a.name
 FROM orders o
 JOIN accounts a ON a.id = o.account_id
@@ -165,7 +165,7 @@ HAVING SUM(o.total) > (SELECT total
                          LIMIT 1) sub);
 ```
 This is now a list of all the accounts with more total orders. We can get the count with just another simple subquery.
-```javascript
+```sql
 SELECT COUNT(*)
 FROM (SELECT a.name
        FROM orders o
@@ -185,7 +185,7 @@ FROM (SELECT a.name
 - For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?
 
 Here, we first want to pull the customer with the most spent in lifetime value.
-```javascript
+```sql
 SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
 FROM orders o
 JOIN accounts a
@@ -195,7 +195,7 @@ ORDER BY 3 DESC
 LIMIT 1;
 ```
 Now, we want to look at the number of events on each channel this company had, which we can match with just the **id**.
-```javascript
+```sql
 SELECT a.name, w.channel, COUNT(*)
 FROM accounts a
 JOIN web_events w
@@ -217,7 +217,7 @@ I added an **ORDER BY** for no real reason, and the account name to assure I was
 - What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?
 
 First, we just want to find the top 10 accounts in terms of highest **total_amt_usd**.
-```javascript
+```sql
 SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
 FROM orders o
 JOIN accounts a
@@ -227,7 +227,7 @@ ORDER BY 3 DESC
 LIMIT 10;
 ```
 Now, we just want the average of these 10 amounts.
-```javascript
+```sql
 SELECT AVG(tot_spent)
 FROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
       FROM orders o
@@ -243,12 +243,12 @@ FROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
 - What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.
 
 First, we want to pull the average of all accounts in terms of **total_amt_usd**:
-```javascript
+```sql
 SELECT AVG(o.total_amt_usd) avg_all
 FROM orders o
 ```
 Then, we want to only pull the accounts with more than this average amount.
-```javascript
+```sql
 SELECT o.account_id, AVG(o.total_amt_usd)
 FROM orders o
 GROUP BY 1
@@ -256,7 +256,7 @@ HAVING AVG(o.total_amt_usd) > (SELECT AVG(o.total_amt_usd) avg_all
                                FROM orders o);
 ```
 Finally, we just want the average of these values.
-```javascript
+```sql
 SELECT AVG(avg_amt)
 FROM (SELECT o.account_id, AVG(o.total_amt_usd) avg_amt
     FROM orders o
