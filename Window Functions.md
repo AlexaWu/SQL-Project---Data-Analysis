@@ -6,21 +6,21 @@ Window functions are permitted only in the SELECT list and the ORDER BY clause o
 Window functions execute after regular aggregate functions
 
 Each windowing behavior can be named in a WINDOW clause and then referenced in OVER. For example:
-```javascript
+```sql
 SELECT sum(salary) OVER w, avg(salary) OVER w
   FROM empsalary
   WINDOW w AS (PARTITION BY depname ORDER BY salary DESC);
 ```
 
 - Create a running total of **standard_amt_usd** (in the `orders` table) over order time with no date truncation. Final table should have two columns: the `amount being added for each new row`, and the `running total`.
-```javascript
+```sql
 SELECT standard_amt_usd,
        SUM(standard_amt_usd) OVER (ORDER BY occurred_at) AS running_total
 FROM orders
 ```
 
 - Create a running total of **standard_amt_usd** (in the `orders` table) over order time, but this time, **date truncate occurred_at by year** and **partition by that same year-truncated** occurred_at variable. Final table should have three columns: the `amount being added for each row`, the `truncated date`, and the `running total within each year`.
-```javascript
+```sql
 SELECT standard_amt_usd,
        DATE_TRUNC('year', occurred_at) as year,
        SUM(standard_amt_usd) OVER (PARTITION BY DATE_TRUNC('year', occurred_at) ORDER BY occurred_at) AS running_total
@@ -38,7 +38,7 @@ Reference:
 # ROW_NUMBER & RANK
 
 - Select the **id**, **account_id**, and **total variable** from the `orders` table, then create a column called **total_rank** that ranks this total amount of paper ordered (from highest to lowest) for each account using a partition. Your final table should have these four columns.
-```javascript
+```sql
 SELECT id,
        account_id,
        total,
@@ -47,7 +47,7 @@ FROM orders
 ```
 
 # Aggregates in Window Functions
-```javascript
+```sql
 SELECT id,
        account_id,
        standard_qty,
@@ -62,7 +62,7 @@ FROM orders
 ```
 
 # Aliases for Multiple Window Functions
-```javascript
+```sql
 SELECT id,
        account_id,
        DATE_TRUNC('year',occurred_at) AS year,
@@ -80,7 +80,7 @@ WINDOW account_year_window AS (PARTITION BY account_id ORDER BY DATE_TRUNC('year
 
 LAG function: Return the value from a previous row to the current row in the table.\
 LEAD function: Return the value from the row following the current row in the table.
-```javascript
+```sql
 SELECT occurred_at,
        total_amt_usd,
        LEAD(total_amt_usd) OVER (ORDER BY occurred_at) AS lead,
@@ -98,7 +98,7 @@ SELECT occurred_at,
 NTILE(*# of buckets*)
 
 - Use the **NTILE** functionality to divide the accounts into 4 levels in terms of the amount of **standard_qty** for their orders. Your resulting table should have the `account_id`, the `occurred_at time for each order`, the `total amount of standard_qty paper purchased`, and `one of four levels` in a standard_quartile column.
-```javascript
+```sql
 SELECT
        account_id,
        occurred_at,
@@ -109,7 +109,7 @@ SELECT
 ```
 
 - Use the **NTILE** functionality to divide the accounts into two levels in terms of the amount of **gloss_qty** for their orders. Your resulting table should have the `account_id`, the `occurred_at time for each order`, the `total amount of gloss_qty paper purchased`, and `one of two levels` in a gloss_half column.
-```javascript
+```sql
 SELECT
        account_id,
        occurred_at,
@@ -120,7 +120,7 @@ SELECT
 ```
 
 - Use the **NTILE** functionality to divide the orders for each account into 100 levels in terms of the amount of **total_amt_usd** for their orders. Your resulting table should have the `account_id`, the `occurred_at time for each order`, the `total amount of total_amt_usd paper purchased`, and `one of 100 levels` in a total_percentile column.
-```javascript
+```sql
 SELECT
        account_id,
        occurred_at,
