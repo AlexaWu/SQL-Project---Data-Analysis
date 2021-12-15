@@ -40,7 +40,7 @@ SUM, AVG, COUNT, HAVING
 
 [Common Table Expression/WITH](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Common%20Table%20Expression.md)
 
-Same as Subqueries 3-8, solve in CTE (more readable and efficient)
+Same as Subqueries 3-8 questions, but solved in CTE (more readable and efficient)
 
 ## :label: SQL Data Cleaning
 [LEFT, RIGHT, LENGTH](https://github.com/AlexaWu/SQL-Project---Parch-Posey/blob/main/Data%20Cleaning.md#left-right-length)
