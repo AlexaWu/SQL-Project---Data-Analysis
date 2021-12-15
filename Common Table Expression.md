@@ -2,7 +2,7 @@
 
 - Provide the **name** of the **sales_rep** in **each region** with the largest amount of **total_amt_usd** sales.
 
-```javascript
+```sql
 WITH t1 AS (
   SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
    FROM sales_reps s
@@ -28,7 +28,7 @@ ON t1.region_name = t2.region_name AND t1.total_amt = t2.total_amt;
 
 - For the region with the largest (sum) of sales **total_amt_usd**, how many **total** (count) orders were placed?
 
-```javascript
+```sql
 WITH t1 AS (
    SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
    FROM sales_reps s
@@ -59,7 +59,7 @@ HAVING SUM(o.total_amt_usd) = (SELECT * FROM t2);
 
 - **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer?
 
-```javascript
+```sql
 WITH t1 AS (
   SELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total
   FROM accounts a
@@ -82,7 +82,7 @@ FROM t2;
 	     
 - For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?
 
-```javascript
+```sql
 WITH t1 AS (
    SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
    FROM orders o
@@ -103,7 +103,7 @@ ORDER BY 3 DESC;
 	
 - What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?
 
-```javascript
+```sql
 WITH t1 AS (
    SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent
    FROM orders o
@@ -120,7 +120,7 @@ FROM t1;
 
 - What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.
 
-```javascript
+```sql
 WITH t1 AS (
    SELECT AVG(o.total_amt_usd) avg_all
    FROM orders o
