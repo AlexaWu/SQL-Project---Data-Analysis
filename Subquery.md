@@ -4,7 +4,7 @@
 
 Step 1, group by the day and channel, then ordering by the number of events (the third column).
 
-```javascript
+```sql
 SELECT DATE_TRUNC('day',occurred_at) AS day,
 	channel, COUNT(*) as events
 FROM web_events
@@ -14,7 +14,7 @@ ORDER BY 3 DESC;
 
 Step 2, get a table that shows the **average** number of events a day for each channel.
 
-```javascript
+```sql
 SELECT channel, AVG(events) AS average_events
 FROM (SELECT DATE_TRUNC('day',occurred_at) AS day,
              channel, COUNT(*) as events
@@ -34,13 +34,13 @@ Also, notice the query here compared a single value. If we returned an entire co
 
 Step 1, pull the first month/year combo from the orders table
 
-```javascript
+```sql
 SELECT DATE_TRUNC('month', MIN(occurred_at)) 
 FROM orders;
 ```
 Step 2, get a table that shows the **average** number of events a day for each channel.
 
-```javascript
+```sql
 SELECT AVG(standard_qty) avg_std, AVG(gloss_qty) avg_gls, AVG(poster_qty) avg_pst, SUM(total_amt_usd)
 FROM orders
 WHERE DATE_TRUNC('month', occurred_at) = 
@@ -53,7 +53,7 @@ WHERE DATE_TRUNC('month', occurred_at) =
 - Provide the **name** of the **sales_rep** in **each region** with the largest amount of **total_amt_usd** sales.
 
 First, I wanted to find the **total_amt_usd** totals associated with each **sales rep**, and I also wanted the region in which they were located. The query below provided this information.
-```javascript
+```sql
 SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
 FROM sales_reps s
 JOIN accounts a ON a.sales_rep_id = s.id
@@ -63,7 +63,7 @@ GROUP BY 1,2
 ORDER BY 3 DESC;
 ```
 Next, I pulled the max for each region, and then we can use this to pull those rows in our final result.
-```javascript
+```sql
 SELECT region_name, MAX(total_amt) total_amt
      FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
              FROM sales_reps s
@@ -74,7 +74,7 @@ SELECT region_name, MAX(total_amt) total_amt
      GROUP BY 1;
 ```
 Essentially, this is a **JOIN** of these two tables, where the region and amount match.
-```javascript
+```sql
 SELECT t3.rep_name, t3.region_name, t3.total_amt
 FROM(SELECT region_name, MAX(total_amt) total_amt
      FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt
@@ -100,7 +100,7 @@ AND t3.total_amt = t2.total_amt;
 - For the region with the largest (sum) of sales **total_amt_usd**, how many **total** (count) orders were placed?
 
 The first query I wrote was to pull the **total_amt_usd** for each **region**.
-```javascript
+```sql
 SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
 FROM sales_reps s 
 JOIN accounts a ON a.sales_rep_id = s.id
@@ -109,7 +109,7 @@ JOIN region r ON r.id = s.region_id
 GROUP BY r.name;
 ```
 Then we just want the region with the max amount from this table. There are two ways I considered getting this amount. One was to pull the max using a subquery. Another way is to order descending and just pull the top value.
-```javascript
+```sql
 SELECT MAX(total_amt)
 FROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
              FROM sales_reps s
@@ -119,7 +119,7 @@ FROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt
              GROUP BY r.name) sub;
 ```
 Finally, we want to pull the total orders for the region with this amount:
-```javascript
+```sql
 SELECT r.name, COUNT(o.total) total_orders
 FROM sales_reps s
 JOIN accounts a ON a.sales_rep_id = s.id
