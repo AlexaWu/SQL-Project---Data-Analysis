@@ -9,7 +9,7 @@ As an analyst at Parch & Posey you want to see:
 
 so, selecting all of the columns in both of the relevant tables, accounts and sales_reps
 
-```javascript
+```sql
 SELECT *
 FROM accounts
 FULL JOIN sales_reps ON accounts.sales_rep_id = sales_reps.id
@@ -21,7 +21,7 @@ FULL JOIN sales_reps ON accounts.sales_rep_id = sales_reps.id
 
 - Write a query that **left joins** the `accounts` table and the `sales_reps` tables on each **sale rep's ID number** and joins it using the **<** comparison operator on **accounts.primary_poc** and **sales_reps.name**. The query results should be a table with three columns: the `account name` (e.g. Johnson Controls), the `primary contact name` (e.g. Cammy Sosnowski), and the `sales representative's name` (e.g. Samuel Racine)
 
-```javascript
+```sql
 SELECT accounts.name as account_name,
        accounts.primary_poc as poc_name,
        sales_reps.name as sales_rep_name
@@ -42,7 +42,7 @@ AND accounts.primary_poc < sales_reps.name
 
 - Find those web events that occurred after, but not more than 1 day after, another web event, the result includes a column for the channel variable in both instances of the table 
 
-```javascript
+```sql
 SELECT we1.id AS we_id,
        we1.account_id AS we1_account_id,
        we1.occurred_at AS we1_occurred_at,
@@ -72,7 +72,7 @@ For example: When you want to determine all reasons students are late. Currently
 The table with the students' information needs to be appended with the late reasons. It requires no aggregation or filter, but all duplicates need to be removed. So the final use case is the one where the UNION operator makes the most sense.
 
 - Write a query that uses UNION ALL on two instances (and selecting all columns) of the `accounts` table.
-```javascript
+```sql
 SELECT *
     FROM accounts
 
@@ -82,7 +82,7 @@ SELECT *
   FROM accounts
  ```
 - Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where `name equals Walmart` and filtering the second table where `name equals Disney`
-```javascript
+```sql
 SELECT *
     FROM accounts
     WHERE name = 'Walmart'
@@ -95,7 +95,7 @@ SELECT *
  ```
 
 - Perform the union in first query in a common table expression and name it `double_accounts`. Then do a COUNT the number of times a name appears in the `double_accounts` table
-```javascript
+```sql
 WITH double_accounts AS (
     SELECT *
       FROM accounts
