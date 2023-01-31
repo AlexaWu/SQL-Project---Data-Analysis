@@ -1,10 +1,10 @@
 # SQL Project
 
-### Project skills summary
+## Skills Summary
 
 Window Functions, CTE, Advanced Joins &amp; Performance Tuning, Data Cleaning, Subqueries, Temporary Tables, Aggregations
 
-### Project database
+## Project database
 
 Parch and Posey, a hypothetical paper company's sales data of different types of paper (regular, poster, and glossy). Their clients are primarily large Fortune 100 companies whom they attract by advertising on Google, Facebook, and Twitter. The database consists of different [tables](https://github.com/AlexaWu/SQL-Project---Parch-Posey/tree/main/database%20in%20excel) linked with a database schema.
 
