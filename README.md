@@ -1,6 +1,6 @@
 # SQL Project - Parch and Posey Company Sales Data Analysis
 
-> SQL Skills Summary: Window Functions, CTE, Advanced Joins &amp; Performance Tuning, Data Cleaning, Subqueries, Temporary Tables, Aggregations
+`Window Functions`, `CTE`, `Advanced Joins &amp; Performance Tuning`, `Data Cleaning`, `Subqueries`, `Temporary Tables`, `Aggregations`
 
 ### :deciduous_tree: Project database
 
