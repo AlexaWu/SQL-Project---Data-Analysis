@@ -1,8 +1,4 @@
-# SQL Project
-
-### :label: Skills Summary
-
-Window Functions, CTE, Advanced Joins &amp; Performance Tuning, Data Cleaning, Subqueries, Temporary Tables, Aggregations
+# SQL Project - Parch and Posey Company Sales Data Analysis
 
 ### :label: Project database
 
@@ -12,11 +8,13 @@ Window Functions, CTE, Advanced Joins &amp; Performance Tuning, Data Cleaning, S
 
 Database download link: https://video.udacity-data.com/topher/2020/May/5eb5533b_parch-and-posey/parch-and-posey.sql
 
-#### Entity Relationship Diagrams(ERD)
+#### Entity Relationship Diagrams (ERD)
 
 <img src="https://video.udacity-data.com/topher/2017/November/5a0e2796_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png" width=50% height=50%>
 
 ## :label: SQL Aggregations
+
+> Skills Summary: Window Functions, CTE, Advanced Joins &amp; Performance Tuning, Data Cleaning, Subqueries, Temporary Tables, Aggregations
 
 SUM, AVG, COUNT, HAVING
 
